@@ -5,17 +5,17 @@ import Output from "./components/Output";
 import Footer from "./components/Footer";
 
 function App() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleFileChange = (file: File | null) => {
-    setSelectedFile(file);
-  };
+  const [response, setResponse] = useState("");
 
   return (
     <div className="App">
       <Header />
-      <AudioUploader onFileChange={handleFileChange} />
-      <Output />
+      <AudioUploader
+        handleResponse={(res) => {
+          setResponse(res);
+        }}
+      />
+      <Output response={response} />
       <Footer />
     </div>
   );

@@ -1,5 +1,5 @@
 .output__container {
-  text-align: center;
+  text-align: left;
   border: 1px solid var(--color-primary);
   border-radius: 5px;
   padding: 15px;

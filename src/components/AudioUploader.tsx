@@ -1,54 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/audioUploader.css";
 import DownloadIcon from "../assets/downloadIcon.svg";
 
-function AudioUploader() {
-  const [audioFile, setAudioFile] = useState<File | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const r = await fetch("https://c506-186-30-66-167.ngrok.io/");
-      const r2 = await r.json();
-      console.log(r2);
-    })();
-  }, []);
+function AudioUploader({
+  handleResponse,
+}: {
+  handleResponse: (response: string) => void;
+}) {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleFileSelect(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files ? event.target.files[0] : null;
-    setAudioFile(file);
-  }
-
-  function tempFuncion() {
-    fetch("https://c506-186-30-66-167.ngrok.io/api/test", {
-      method: "POST",
-
-      body: JSON.stringify({
-        hola: "key",
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    setSelectedFile(file);
   }
 
   function handleUpload() {
-    if (!audioFile) return;
+    if (!selectedFile) return;
+    setIsLoading(true);
     const formData = new FormData();
-    formData.append("audio", audioFile);
+    formData.append("audio", selectedFile);
 
-    fetch("https://c506-186-30-66-167.ngrok.io/upload-audio", {
+    fetch("https://22c9-186-30-66-167.ngrok-free.app/api/upload-audio", {
       method: "POST",
       body: formData,
     })
       .then((response) => {
-        console.log(response);
         return response.json();
       })
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+      .then((data) => handleResponse(data.response))
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   }
 
   function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
@@ -58,7 +40,7 @@ function AudioUploader() {
   function handleDrop(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-    setAudioFile(file);
+    setSelectedFile(file);
   }
 
   return (
@@ -76,8 +58,12 @@ function AudioUploader() {
           <input type="file" accept=".mp3,.wav" onChange={handleFileSelect} />
           <p>Up to 10MB</p>
         </div>
-        <button className="btn btn__primary" onClick={tempFuncion}>
-          Upload test
+        <button
+          className="btn btn__primary"
+          onClick={handleUpload}
+          disabled={isLoading}
+        >
+          {!isLoading ? "Upload" : "Uploading..."}
         </button>
       </div>
     </div>
