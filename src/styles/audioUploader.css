@@ -1,0 +1,44 @@
+.input__container {
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+input {
+}
+
+.input {
+  display: grid;
+  align-items: center;
+}
+
+h2 {
+  padding: 0.6rem 5rem;
+  margin-bottom: 15px;
+}
+
+.drop__area p {
+  font-size: small;
+}
+
+.drop__area {
+  padding: 5% 30%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border: 2px dotted var(--color-primary);
+  border-spacing: 5px 1rem;
+}
+
+.drop__area:hover {
+  border: 2px solid var(--color-primary);
+  color: var(--color-light);
+  background-color: var(--color-primary-variant);
+  transform: scale(0.97);
+  transition: var(--transition);
+}
+
+.drop__area.active {
+  border: 2px solid var(--color-primary-variant);
+  color: var(--color-light);
+}
