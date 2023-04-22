@@ -21,7 +21,7 @@ function AudioUploader({
     const formData = new FormData();
     formData.append("audio", selectedFile);
 
-    fetch("https://22c9-186-30-66-167.ngrok-free.app/api/upload-audio", {
+    fetch("https://a1c7-186-30-66-167.ngrok-free.app/api/upload-audio", {
       method: "POST",
       body: formData,
     })
@@ -33,25 +33,11 @@ function AudioUploader({
       .finally(() => setIsLoading(false));
   }
 
-  function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-  }
-
-  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    setSelectedFile(file);
-  }
-
   return (
     <div className="container input__container">
       <div className="input">
         <h2>First Upload your file</h2>
-        <div
-          className="drop__area"
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-        >
+        <div className="drop__area">
           <img src={DownloadIcon} alt="este" />
           <h5>Drag and drop to upload</h5>
 
