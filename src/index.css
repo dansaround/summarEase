@@ -55,6 +55,36 @@ img {
   object-fit: cover;
 }
 
+.btn {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-primary {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: black;
+}
+
 /*============ MEDIA QUERIES (MEDIUM DEVICES) ===============*/
 @media screen and (max-width: 1024px) {
   .container {
