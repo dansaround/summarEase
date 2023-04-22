@@ -28,11 +28,12 @@ h2 {
   cursor: pointer;
   border: 2px dotted var(--color-primary);
   border-spacing: 5px 1rem;
+  font-weight: bold;
 }
 
 .dragging {
   border: 2px solid var(--color-primary);
-  color: var(--color-light);
+  color: var(--color-white);
   background-color: var(--color-bg-variant);
   transform: scale(0.97);
   transition: var(--transition);
