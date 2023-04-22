@@ -29,8 +29,7 @@ html {
 
 /*============GENERAL STYLES ================*/
 .container {
-  width: var(--container-width-lg);
-  margin: 0 auto;
+  margin-left: 20px;
   margin-bottom: 10px;
 }
 
@@ -40,6 +39,10 @@ h3,
 h4,
 h5 {
   font-weight: 500;
+}
+
+h5 {
+  font-size: 20px;
 }
 
 h1 {
@@ -84,6 +87,32 @@ img {
   background-color: white;
   color: black;
 }
+
+.main-contennt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-section {
+  margin: 0;
+
+}
+
+.info-section h2 {
+  margin: 0;
+  padding: 2px 10px;
+  font-weight: 600;
+  max-width: 300px;
+  background-color: black;
+  color:white;
+  margin-bottom: 5px;
+}
+
+.info-section ul {
+  
+}
+
 
 /*============ MEDIA QUERIES (MEDIUM DEVICES) ===============*/
 @media screen and (max-width: 1024px) {
