@@ -29,6 +29,7 @@ h2 {
   border: 2px dotted var(--color-primary);
   border-spacing: 5px 1rem;
   font-weight: bold;
+  font-size: 30px;
 }
 
 .dragging {
@@ -40,7 +41,7 @@ h2 {
 }
 
 .not__dragging {
-  background-color: var(--color-bg);
+  background-color: var(--color-white);
 }
 
 .hidden {
