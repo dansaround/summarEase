@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import AudioUploader from "./components/AudioUploader";
 import Output from "./components/Output";
 import Footer from "./components/Footer";
+import Navbar from "./components/NavBar";
 
 import "./index.css";
 
@@ -11,7 +12,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Navbar />
+      {/* <Header /> */}
       <div className="main-contennt">
         <div className="info-section">
           <h2>Upload an audio file</h2>

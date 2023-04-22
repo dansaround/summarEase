@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="100" viewBox="0 0 500 100">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 80px;
+        font-family: "Courier Prime";
+      }
+    </style>
+  </defs>
+  <text id="SummarEase" class="cls-1" x="11" y="71">SummarEase</text>
+</svg>
