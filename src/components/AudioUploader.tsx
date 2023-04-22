@@ -9,7 +9,7 @@ function AudioUploader({
 }) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [filename, setFilename] = useState("Ninguno archivo selec.");
+  const [filename, setFilename] = useState("Ningún archivo selec.");
   const [isDragging, setIsDragging] = useState(false); // Add state for dragging
 
   function handleFileSelect(event: React.ChangeEvent<HTMLInputElement>) {
