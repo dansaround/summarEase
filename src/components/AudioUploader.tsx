@@ -9,10 +9,13 @@ function AudioUploader({
 }) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [filename, setFilename] = useState("Ninguno archivo selec.");
+  const [isDragging, setIsDragging] = useState(false); // Add state for dragging
 
   function handleFileSelect(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files ? event.target.files[0] : null;
     setSelectedFile(file);
+    setFilename(file ? file.name : "Ninguno archivo selec.");
   }
 
   function handleUpload() {
@@ -33,16 +36,61 @@ function AudioUploader({
       .finally(() => setIsLoading(false));
   }
 
+  function handleDrop(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    setSelectedFile(file);
+    setFilename(file ? file.name : "Ninguno archivo selec.");
+    setIsDragging(false); // Reset dragging state
+  }
+
+  function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "copy";
+    setIsDragging(true); // Set dragging state
+  }
+
+  function handleDragLeave(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setIsDragging(false);
+  }
+
+  function handleDragStart(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.dropEffect = "move";
+  }
+
+  function handleDragEnd(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.clearData();
+    setIsDragging(false); // Reset dragging state
+  }
+
   return (
     <div className="container input__container">
       <div className="input">
         <h2>First Upload your file</h2>
-        <div className="drop__area">
+        <div
+          className={`drop__area ${isDragging ? "dragging" : "not__dragging"}`} // Add class based on dragging state
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragLeave={handleDragLeave}
+        >
           <img src={DownloadIcon} alt="este" />
           <h5>Drag and drop to upload</h5>
 
-          <input type="file" accept=".mp3,.wav" onChange={handleFileSelect} />
-          <p>Up to 10MB</p>
+          <input
+            type="file"
+            accept=".mp3,.wav"
+            onChange={handleFileSelect}
+            className="hidden"
+          />
+          <p>{filename}</p>
         </div>
         <button
           className="btn btn__primary"

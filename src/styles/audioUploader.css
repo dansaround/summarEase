@@ -30,15 +30,18 @@ h2 {
   border-spacing: 5px 1rem;
 }
 
-.drop__area:hover {
+.dragging {
   border: 2px solid var(--color-primary);
   color: var(--color-light);
-  background-color: var(--color-primary-variant);
+  background-color: var(--color-bg-variant);
   transform: scale(0.97);
   transition: var(--transition);
 }
 
-.drop__area.active {
-  border: 2px solid var(--color-primary-variant);
-  color: var(--color-light);
+.not__dragging {
+  background-color: var(--color-bg);
+}
+
+.hidden {
+  display: none;
 }
