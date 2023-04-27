@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
 
   box-sizing: border-box;
@@ -17,6 +17,7 @@
   height: 50px;
   margin-left: 20px;
   width: 100%;
+  object-fit: contain;
 }
 
 .navbar__buttons {
@@ -32,4 +33,13 @@
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar__logo img {
+    height: 50px;
+    margin-left: 20px;
+    width: 75%;
+    object-fit: contain;
+  }
 }

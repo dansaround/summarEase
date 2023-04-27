@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/audioUploader.css";
 import DownloadIcon from "../assets/downloadIcon.svg";
 import { NO_FILE_SELECTED_COPY } from "../constants";
+import LoadingSpinner from "./LoadingSpinner";
 
 function AudioUploader({
   handleResponse,
@@ -25,7 +26,7 @@ function AudioUploader({
     const formData = new FormData();
     formData.append("audio", selectedFile);
 
-    fetch("https://a1c7-186-30-66-167.ngrok-free.app/api/upload-audio", {
+    fetch("https://5ac2-186-30-66-167.ngrok-free.app/api/upload-audio", {
       method: "POST",
       body: formData,
     })
@@ -85,17 +86,23 @@ function AudioUploader({
             onDragEnd={handleDragEnd}
             onDragLeave={handleDragLeave}
           >
-            <img src={DownloadIcon} alt="este" />
-            <h5>Drag and drop or select</h5>
+            {isLoading ? (
+              <LoadingSpinner /> // Render the LoadingSpinner component if isLoading is true
+            ) : (
+              <>
+                <img src={DownloadIcon} alt="este" />
+                <h5>Drag and drop or select</h5>
 
-            <input
-              id="file-upload-input"
-              type="file"
-              accept=".mp3,.wav"
-              onChange={handleFileSelect}
-              className="hidden"
-            />
-            <p>{filename}</p>
+                <input
+                  id="file-upload-input"
+                  type="file"
+                  accept=".mp3,.wav"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+                <p>{filename}</p>
+              </>
+            )}
           </div>
         </label>
         <button
