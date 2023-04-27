@@ -120,9 +120,6 @@ img {
   margin-bottom: 5px;
 }
 
-.info-section ul {
-}
-
 /*============ MEDIA QUERIES (MEDIUM DEVICES) ===============*/
 @media screen and (max-width: 1024px) {
   .container {

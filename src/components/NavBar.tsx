@@ -2,6 +2,10 @@ import React from "react";
 import "../styles/navBar.css";
 import LOGO from "../assets/logo_summarEase.png";
 
+const handleDonation = () => {
+  alert("Thank you for your interest, coming soon.");
+};
+
 const Navbar = () => {
   return (
     <nav className="navbar">
@@ -11,7 +15,9 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar__buttons">
-        <button className="btn btn-primary ">Donate</button>
+        <button className="btn btn-primary" onClick={handleDonation}>
+          Donate
+        </button>
       </div>
     </nav>
   );
