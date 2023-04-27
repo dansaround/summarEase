@@ -17,7 +17,7 @@ const Output: FC<OutputProps> = ({ response, resetOutput }) => {
         )}
       </div>
       <button className="btn btn__reset" onClick={resetOutput}>
-        Restart
+        Make another summary
       </button>
     </>
   );
