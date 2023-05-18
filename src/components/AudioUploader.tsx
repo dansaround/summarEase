@@ -26,7 +26,7 @@ function AudioUploader({
     const formData = new FormData();
     formData.append("audio", selectedFile);
 
-    fetch("https://5ac2-186-30-66-167.ngrok-free.app/api/upload-audio", {
+    fetch("http://173.255.198.22:9000/api/upload-audio", {
       method: "POST",
       body: formData,
     })
